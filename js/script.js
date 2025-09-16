@@ -63,4 +63,30 @@ $(document).ready(function() {
         // מוסיף את הכרטיס למכולת התוצאות
         $('#resultsContainer').append(cardHtml);
     }
+   $('#artModal').on('show.bs.modal', function(event) {
+    // מזהה את הכפתור שגרם לפתיחת ה-modal
+    const button = $(event.relatedTarget);
+    // מקבל את ה-objectID מהמאפיין data-object-id
+    const objectId = button.data('object-id');
+    
+    // בונה את הכתובת לקריאה עבור הפרטים המלאים של היצירה
+    const objectApiUrl = `https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectId}`;
+    
+    // מבצע קריאה ל-API כדי לקבל את פרטי היצירה המלאים
+    $.getJSON(objectApiUrl, function(data) {
+        // מעדכן את תוכן ה-Modal עם הנתונים מה-API
+        $('#modal-image').attr('src', data.primaryImage);
+        $('#modal-title').text(data.title);
+        $('#modal-artist').text(data.artistDisplayName || 'לא ידוע');
+        $('#modal-date').text(data.objectDate || 'לא ידוע');
+        $('#modal-department').text(data.department || 'לא ידוע');
+        $('#modal-medium').text(data.medium || 'לא ידוע');
+        $('#modal-dimensions').text(data.dimensions || 'לא ידוע');
+        $('#modal-geography').text(data.geography || 'לא ידוע');
+        
+        // מעדכן את כותרת ה-Modal
+        const modalTitle = $('#artModalLabel');
+        modalTitle.text(data.title);
+    });
+});
 });

@@ -28,7 +28,29 @@
         <div class="row" id="resultsContainer">
             </div>
     </main>
-
+<div class="modal fade" id="artModal" tabindex="-1" aria-labelledby="artModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="artModalLabel">פרטי יצירה</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img id="modal-image" src="" class="img-fluid mb-3" alt="">
+                <h4 id="modal-title"></h4>
+                <p><strong>אמן:</strong> <span id="modal-artist"></span></p>
+                <p><strong>תאריך:</strong> <span id="modal-date"></span></p>
+                <p><strong>מחלקה:</strong> <span id="modal-department"></span></p>
+                <p><strong>טכניקה:</strong> <span id="modal-medium"></span></p>
+                <p><strong>מימדים:</strong> <span id="modal-dimensions"></span></p>
+                <p><strong>מקום יצירה:</strong> <span id="modal-geography"></span></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">סגור</button>
+            </div>
+        </div>
+    </div>
+</div>
     <footer class="bg-light text-center py-3 mt-5">
         <div class="container">
             <p>&copy; 2024 גלריית האמנות. כל הזכויות שמורות.</p>
