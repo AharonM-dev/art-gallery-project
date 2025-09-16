@@ -8,6 +8,32 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <header class="bg-primary text-white text-center py-4">
+        <div class="container">
+            <h1 class="display-4">גלריית האמנות</h1>
+            <p class="lead">חקור יצירות אמנות מפורסמות מכל העולם</p>
+        </div>
+    </header>
+
+    <main class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="input-group mb-3">
+                    <input type="text" id="searchInput" class="form-control" placeholder="חפש לפי מילת מפתח, אמן או תקופה">
+                    <button class="btn btn-primary" type="button" id="searchBtn">חפש</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="resultsContainer">
+            </div>
+    </main>
+
+    <footer class="bg-light text-center py-3 mt-5">
+        <div class="container">
+            <p>&copy; 2024 גלריית האמנות. כל הזכויות שמורות.</p>
+        </div>
+    </footer>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
