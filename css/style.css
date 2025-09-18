@@ -1,0 +1,48 @@
+:root {
+  --primary-color: #5D4037;
+  --secondary-color: #BCAAA4;
+  --text-color: #333333;
+  --background-color: #F5F5F5;
+}
+body {
+    font-family: 'Assistant', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+.bg-primary, .display-4, .lead {
+    font-family: playfair display, serif;
+    background-color: var(--primary-color) !important;
+    color: #FFFFFF !important;
+}
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #FFFFFF;
+    /* עיצוב כללי */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.btn-primary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    opacity: 0.8;
+}
+h2, h3 {
+    color: var(--primary-color);
+}
+/* מבטיח שתמונות הכרטיס יהיו באותו גובה */
+.card-img-top {
+  height: 150px;
+  object-fit: cover; /* חותך את התמונה כדי למלא את המסגרת */
+}
+/* מוודא שתוכן הכרטיס מיושר בתחתית */
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body {
+  flex-grow: 1; /* מוודא שגוף הכרטיס יגדל וימלא את כל החלל הריק */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* מיישר את התוכן לתחתית */
+}

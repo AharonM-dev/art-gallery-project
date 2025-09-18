@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    loadInitialArt();
     // מזהה את כפתור החיפוש
     $('#searchBtn').on('click', function() {
         // מנקה את תוצאות החיפוש הקודמות
@@ -63,6 +64,34 @@ $(document).ready(function() {
         // מוסיף את הכרטיס למכולת התוצאות
         $('#resultsContainer').append(cardHtml);
     }
+    // פונקציה לטעינת גלריה מוגדרת מראש
+function loadInitialArt() {
+    // API שמספק את כל האובייקטים במחלקה מסוימת (למשל, ציורים אימפרסיוניסטיים)
+    const initialApiUrl = `https://collectionapi.metmuseum.org/public/collection/v1/search?departmentId=11&q=painting`;
+
+    $.getJSON(initialApiUrl, function(data) {
+        if (data.total > 0) {
+            // לוקח 20 יצירות אקראיות מתוך התוצאות
+            const objectIds = getRandomItems(data.objectIDs, 10);
+            
+            objectIds.forEach(function(objectId) {
+                const objectApiUrl = `https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectId}`;
+                
+                $.getJSON(objectApiUrl, function(objectData) {
+                    if (objectData.primaryImageSmall) {
+                        displayArtCard(objectData);
+                    }
+                });
+            });
+        }
+    });
+}
+
+// פונקציית עזר לבחירת פריטים אקראיים ממערך
+function getRandomItems(arr, num) {
+    const shuffled = [...arr].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, num);
+}
    $('#artModal').on('show.bs.modal', function(event) {
     // מזהה את הכפתור שגרם לפתיחת ה-modal
     const button = $(event.relatedTarget);
